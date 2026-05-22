@@ -43,6 +43,69 @@ const SCORE_BAR_COLOR: Record<string, string> = {
   red: "bg-red-500",
 };
 
+const PRIORITY_GUIDE: Record<string, { title: string; description: string; bullets: string[] }> = {
+  main_risk: {
+    title: "지금 가장 위험한 부분부터 먼저 짚어볼게요.",
+    description:
+      "지금은 손실 자체보다, 어떤 구조가 손실을 더 키울 수 있는지부터 보는 게 중요해요.",
+    bullets: [
+      "레버리지나 신용 구조가 겹쳐 있는지",
+      "현금 여력이 줄어들고 있는지",
+      "손절 기준 없이 버티고 있는 상태인지",
+    ],
+  },
+  stop_loss_standard: {
+    title: "손절 기준은 감정보다 구조를 먼저 보는 게 좋아요.",
+    description:
+      "지금은 팔지 말지를 바로 정하기보다, 어느 구간에서 판단을 다시 볼지 기준부터 세우는 게 더 중요해요.",
+    bullets: [
+      "현재 손실률이 감당 가능한 범위를 넘었는지",
+      "한 종목 비중이 너무 커진 상태인지",
+      "손절 이후에도 대응 여력이 남는지",
+    ],
+  },
+  averaging_down_decision: {
+    title: "물타기 여부는 추가 매수보다 대응 여력부터 봐야 해요.",
+    description:
+      "평균 단가를 낮추는 것보다, 지금 더 버틸 수 있는 구조인지 먼저 확인하는 게 안전해요.",
+    bullets: [
+      "현금 비중이 아직 충분한지",
+      "추가 매수가 복구 심리 때문은 아닌지",
+      "더 내려가도 대응 기준이 있는지",
+    ],
+  },
+  liquidation_check: {
+    title: "청산이나 반대매매가 걱정된다면 가격보다 기준부터 확인해야 해요.",
+    description:
+      "지금은 전망보다도, 어느 가격에서 강제 정리가 일어날 수 있는지 먼저 확인하는 게 중요해요.",
+    bullets: [
+      "반대매매 기준 가격이 어디인지",
+      "추가 증거금이나 현금 여력이 있는지",
+      "레버리지 구조를 정확히 이해하고 있는지",
+    ],
+  },
+  cash_ratio: {
+    title: "현금 비중은 기다릴 수 있는 힘과도 연결돼 있어요.",
+    description:
+      "현금 여력이 부족하면 좋은 판단을 알아도 실행할 수 없을 수 있어서, 지금은 비중부터 보는 게 좋아요.",
+    bullets: [
+      "보유 현금이 전체 자산에서 어느 정도인지",
+      "추가 하락 시 대응 여력이 남는지",
+      "현금이 없어 판단이 급해지고 있지는 않은지",
+    ],
+  },
+  action_order: {
+    title: "무엇부터 봐야 할지 막막하다면, 순서대로 정리해볼게요.",
+    description:
+      "지금은 한 번에 결론을 내리기보다, 먼저 숫자와 구조를 차분히 확인하는 순서가 중요해요.",
+    bullets: [
+      "현재 손실률 확인",
+      "보유 현금 비중 확인",
+      "레버리지·청산 기준 확인",
+    ],
+  },
+};
+
 function ResultContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -77,6 +140,7 @@ function ResultContent() {
   const badge = BADGE_STYLES[riskResult.badgeColor] ?? BADGE_STYLES.amber;
   const barColor = SCORE_BAR_COLOR[riskResult.badgeColor] ?? "bg-slate-400";
   const contents = relatedContentByLevel[result.level];
+  const priorityGuide = result.priority ? PRIORITY_GUIDE[result.priority] : null;
 
   const psychMessages = result.activeTags
     .map((tag) => psychologyTags[tag])
@@ -147,8 +211,8 @@ function ResultContent() {
           {/* 점수 바 */}
           <div className="mt-6">
             <div className="flex items-center justify-between text-xs text-slate-400 mb-2">
-              <span>리스크 수준</span>
-              <span>{Math.round(result.scorePercent)}%</span>
+              <span>현재 리스크 구간</span>
+              <span>총점 {result.totalScore}점</span>
             </div>
             <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
               <div
@@ -158,6 +222,29 @@ function ResultContent() {
             </div>
           </div>
         </section>
+
+        {/* 2. 우선순위 개인화 안내 */}
+        {priorityGuide && (
+          <section className="bg-slate-900 rounded-2xl px-6 py-6">
+            <p className="text-slate-300 text-xs font-medium mb-2">
+              지금 가장 궁금했던 부분부터 정리해드릴게요.
+            </p>
+            <h2 className="text-white text-lg font-bold mb-3">
+              {priorityGuide.title}
+            </h2>
+            <p className="text-slate-300 text-sm leading-relaxed mb-4">
+              {priorityGuide.description}
+            </p>
+            <ul className="space-y-2">
+              {priorityGuide.bullets.map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <span className="mt-1 w-1.5 h-1.5 rounded-full bg-indigo-300 shrink-0" />
+                  <span className="text-slate-200 text-sm leading-relaxed">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         {/* 2. 심리 태그 추가 문구 */}
         {psychMessages.length > 0 && (

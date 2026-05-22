@@ -13,6 +13,7 @@ export interface DiagnosisResult {
   maxScore: number;
   scorePercent: number;
   activeTags: string[];
+  priority: string | null;
 }
 
 const FORCE_RISK_TAGS = [
@@ -38,6 +39,7 @@ export function calculateRisk(answers: DiagnosisAnswers): DiagnosisResult {
   let totalScore = 0;
   let maxScore = 0;
   const tagCounts: Record<string, number> = {};
+  let priority: string | null = null;
 
   for (const question of questions) {
     const selectedOptionId = answers[question.id];
@@ -48,6 +50,11 @@ export function calculateRisk(answers: DiagnosisAnswers): DiagnosisResult {
 
     const selected = question.options.find((o) => o.id === selectedOptionId);
     if (!selected) continue;
+
+    if (question.id === "q6") {
+      priority = selected.tags[0] ?? null;
+      continue;
+    }
 
     totalScore += selected.score;
 
@@ -87,7 +94,7 @@ export function calculateRisk(answers: DiagnosisAnswers): DiagnosisResult {
     .slice(0, 3)
     .map(([tag]) => tag);
 
-  return { level, totalScore, maxScore, scorePercent, activeTags };
+  return { level, totalScore, maxScore, scorePercent, activeTags, priority };
 }
 
 export function encodeAnswers(answers: DiagnosisAnswers): string {

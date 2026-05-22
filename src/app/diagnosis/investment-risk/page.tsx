@@ -11,37 +11,32 @@ export default function DiagnosisPage() {
   const router = useRouter();
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<DiagnosisAnswers>({});
-  const [selected, setSelected] = useState<string | null>(null);
 
   const question = questions[currentStep];
   const totalSteps = questions.length;
   const isLast = currentStep === totalSteps - 1;
-  const progressPercent = ((currentStep) / totalSteps) * 100;
+  const progressPercent = ((currentStep + 1) / totalSteps) * 100;
+  const selected = answers[question.id] ?? null;
 
   function handleSelect(optionId: string) {
-    setSelected(optionId);
+    setAnswers((prev) => ({ ...prev, [question.id]: optionId }));
   }
 
   function handleNext() {
     if (!selected) return;
 
-    const newAnswers = { ...answers, [question.id]: selected };
-    setAnswers(newAnswers);
-
     if (isLast) {
-      const encoded = encodeAnswers(newAnswers);
+      const encoded = encodeAnswers(answers);
       router.push(`/diagnosis/investment-risk/result?answers=${encoded}`);
       return;
     }
 
     setCurrentStep((prev) => prev + 1);
-    setSelected(null);
   }
 
   function handleBack() {
     if (currentStep === 0) return;
     setCurrentStep((prev) => prev - 1);
-    setSelected(answers[questions[currentStep - 1].id] ?? null);
   }
 
   return (
@@ -60,7 +55,7 @@ export default function DiagnosisPage() {
         <div className="h-1 bg-slate-100">
           <div
             className="h-full bg-indigo-500 transition-all duration-300"
-            style={{ width: `${progressPercent + (1 / totalSteps) * 100}%` }}
+            style={{ width: `${progressPercent}%` }}
           />
         </div>
       </header>
@@ -77,6 +72,9 @@ export default function DiagnosisPage() {
         </h1>
         <p className="text-slate-500 text-sm leading-relaxed mb-8">
           {question.description}
+        </p>
+        <p className="text-slate-400 text-xs leading-relaxed mb-6">
+          한 문항씩 천천히 골라주시면, 지금 가장 먼저 확인해야 할 기준을 정리해드릴게요.
         </p>
 
         {/* 선택지 */}

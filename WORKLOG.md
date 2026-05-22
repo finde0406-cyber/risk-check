@@ -23,3 +23,11 @@
 - Checks run: `npm run build` passed, `npm run lint` passed
 - Open issues or next steps: Replace repeated Financial Risk Lab article reuse with a broader set of first-party articles once more posts are published, and do an in-browser visual pass on the result cards.
 - Commit hash: pending commit creation
+
+## 2026-05-22 11:16:09 +09:00
+- Who: Codex
+- What changed: Improved the diagnosis UX by restoring selected answers naturally across steps, using Q6 as a real result-priority guide, and making the result summary feel less mechanically score-driven.
+- Files touched: `WORKLOG.md`, `src/app/diagnosis/investment-risk/page.tsx`, `src/app/diagnosis/investment-risk/result/page.tsx`, `src/lib/risk-calculator.ts`
+- Checks run: `npm run build` passed, `npm run lint` passed
+- Open issues or next steps: Do a visual browser pass for mobile spacing and decide whether the personalized priority card should also influence the order of lower result sections.
+- Commit hash: pending commit creation
