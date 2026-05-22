@@ -13,13 +13,6 @@ const steps = [
   { n: "03", label: "리스크 구간과 먼저 볼 기준을 정리해드려요." },
 ];
 
-const RISK_SEGMENTS = [
-  "bg-emerald-400",
-  "bg-amber-400",
-  "bg-orange-400",
-  "bg-red-400",
-] as const;
-
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-white">
@@ -38,59 +31,46 @@ export default function HomePage() {
         {/* 히어로 */}
         <div className="flex flex-col items-center text-center max-w-lg mx-auto px-6 pt-14 pb-10">
 
-          {/* 제품 뱃지 */}
-          <div className="inline-flex items-center gap-1.5 bg-indigo-50 border border-indigo-100 rounded-full px-3 py-1 mb-8">
+          {/* 제품 뱃지 — 브랜드 앵커 */}
+          <div className="inline-flex items-center gap-1.5 bg-indigo-50 border border-indigo-100 rounded-full px-3 py-1 mb-7">
             <span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
             <span className="text-indigo-600 text-xs font-semibold tracking-wide">투자 리스크 진단</span>
           </div>
 
-          {/* 메인 카피 */}
-          <h1 className="text-slate-900 text-[1.9rem] font-extrabold leading-tight tracking-tight mb-4">
-            판단이 흔들릴 땐,<br />
-            상태부터 정리해봐요.
+          {/* 메인 카피 — h1 + 보조 카피를 한 단위로 묶음 */}
+          <h1 className="text-slate-900 text-[1.75rem] font-extrabold leading-tight tracking-tight mb-3">
+            지금 판단이 흔들린다면,<br />
+            먼저 내 상태부터 정리해보세요.
           </h1>
 
-          <p className="text-slate-500 text-sm leading-relaxed mb-8 max-w-[260px]">
-            몇 가지 질문으로 지금 상태와 먼저 확인해야 할 기준을 차분히 짚어드려요.
+          <p className="text-slate-400 text-[0.8125rem] leading-relaxed mb-7">
+            몇 가지 질문으로 지금 상태를 차분히 정리해드려요.
           </p>
 
-          {/* 리스크 4구간 스펙트럼 바 */}
-          <div className="flex items-center gap-0.5 mb-8">
-            {RISK_SEGMENTS.map((color, i) => (
-              <div
-                key={i}
-                className={`h-1 w-10 ${color} opacity-65 ${
-                  i === 0 ? "rounded-l-full" : i === 3 ? "rounded-r-full" : ""
-                }`}
-              />
-            ))}
-          </div>
-
+          {/* CTA */}
           <Link
             href="/diagnosis/investment-risk"
-            className="block w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm py-4 rounded-xl text-center transition-colors shadow-[0_4px_14px_rgba(79,70,229,0.25)]"
+            className="block w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm py-4 rounded-2xl text-center transition-colors shadow-[0_4px_16px_rgba(79,70,229,0.26)]"
           >
             내 투자 리스크 진단하기
           </Link>
-          <p className="text-slate-400 text-xs mt-3.5">
+
+          <p className="text-slate-400 text-xs mt-3">
             투자 조언이 아니라, 현재 상태를 차분히 정리해보기 위한 도구예요.
           </p>
         </div>
 
-        {/* 공감 패널 */}
-        <div className="max-w-lg mx-auto px-5 pt-5 pb-9 border-t border-slate-200/50">
-          <p className="text-slate-400 text-xs mb-3">혹시 지금 이런 마음인가요?</p>
-          <div className="bg-white/60 rounded-2xl border border-slate-200/50 overflow-hidden">
+        {/* 공감 패널 — 히어로 연장선, 좌측 선 강조 */}
+        <div className="max-w-lg mx-auto px-6 pt-5 pb-10 border-t border-slate-200/40">
+          <p className="text-slate-400 text-xs mb-4">혹시 지금 이런 마음인가요?</p>
+          <div className="space-y-3.5">
             {empathyItems.map((item, i) => (
-              <div
+              <p
                 key={i}
-                className={`flex items-center gap-3 px-4 py-3.5 ${
-                  i > 0 ? "border-t border-slate-100" : ""
-                }`}
+                className="text-slate-500 text-[0.8125rem] leading-relaxed pl-3.5 border-l border-slate-300/50"
               >
-                <span className="w-px h-4 bg-indigo-200 shrink-0 rounded-full" />
-                <span className="text-slate-600 text-sm leading-snug">{item}</span>
-              </div>
+                {item}
+              </p>
             ))}
           </div>
         </div>
@@ -98,7 +78,7 @@ export default function HomePage() {
 
       {/* 3단계 흐름 */}
       <section className="border-t border-slate-100 bg-white">
-        <div className="max-w-lg mx-auto px-5 py-7">
+        <div className="max-w-lg mx-auto px-5 pt-8 pb-7">
           <p className="text-slate-400 text-xs mb-4">이렇게 진행돼요.</p>
           <div className="space-y-3">
             {steps.map((s) => (
