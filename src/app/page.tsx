@@ -37,11 +37,11 @@ export default function HomePage() {
               투자 리스크 진단
             </p>
 
-            <h1 className="mb-4">
-              <span className="block text-slate-400 text-base font-normal leading-snug mb-2">
+            <h1 className="mb-5">
+              <span className="block text-slate-500 text-base font-normal leading-snug mb-3">
                 지금 판단이 흔들린다면,
               </span>
-              <span className="block text-slate-900 text-[2rem] font-extrabold leading-[1.15] tracking-tight">
+              <span className="block text-slate-900 text-[1.875rem] font-bold leading-tight tracking-tight">
                 먼저 내 상태부터<br />정리해보세요.
               </span>
             </h1>
