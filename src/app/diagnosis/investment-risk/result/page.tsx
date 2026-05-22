@@ -243,7 +243,15 @@ function ResultContent() {
                   <span className="inline-block text-indigo-500 text-xs font-medium bg-indigo-50 px-2 py-0.5 rounded mb-1.5">
                     {content.tag}
                   </span>
-                  <p className="text-slate-800 text-sm font-medium leading-snug truncate">
+                  <p
+                    className="text-slate-800 text-sm font-medium leading-snug"
+                    style={{
+                      display: "-webkit-box",
+                      WebkitLineClamp: 2,
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
+                    }}
+                  >
                     {content.title}
                   </p>
                 </div>

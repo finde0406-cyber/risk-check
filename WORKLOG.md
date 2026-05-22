@@ -39,3 +39,11 @@
 - Checks run: `npm run build` passed, `npm run lint` passed
 - Open issues or next steps: Re-check the landing page on a real phone browser if possible and decide whether the home empathy card or the trust section should be shortened further.
 - Commit hash: pending commit creation
+
+## 2026-05-22 14:31:10 +09:00
+- Who: Codex
+- What changed: Fine-tuned mobile usability by enlarging the diagnosis option touch target and changed result content titles from single-line truncation to two-line clamping.
+- Files touched: `WORKLOG.md`, `src/app/diagnosis/investment-risk/page.tsx`, `src/app/diagnosis/investment-risk/result/page.tsx`
+- Checks run: `npm run build` passed, `npm run lint` passed
+- Open issues or next steps: Do one more real-device pass for the result card vertical rhythm if the content list grows beyond the current set.
+- Commit hash: pending commit creation

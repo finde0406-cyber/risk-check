@@ -79,7 +79,7 @@ export default function DiagnosisPage() {
               <button
                 key={option.id}
                 onClick={() => handleSelect(option.id)}
-                className={`w-full text-left px-4 py-4 rounded-xl border text-sm leading-relaxed transition-all active:scale-[0.99] ${
+                className={`w-full min-h-[72px] touch-manipulation text-left px-4 py-4 rounded-xl border text-sm leading-relaxed transition-all active:scale-[0.99] ${
                   isActive
                     ? "border-indigo-400 bg-indigo-50 text-indigo-800 font-medium"
                     : "border-slate-200 bg-white text-slate-700 hover:border-slate-300"
