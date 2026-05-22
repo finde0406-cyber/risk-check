@@ -29,21 +29,25 @@ export default function HomePage() {
       <section className="bg-[#F7F8FF]">
 
         {/* 히어로 */}
-        <div className="flex flex-col items-center text-center max-w-lg mx-auto px-6 pt-14 pb-10">
+        <div className="flex flex-col items-center text-center max-w-lg mx-auto px-6 pt-14 pb-9">
 
-          {/* 제품 뱃지 — 브랜드 앵커 */}
-          <div className="inline-flex items-center gap-1.5 bg-indigo-50 border border-indigo-100 rounded-full px-3 py-1 mb-7">
-            <span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
-            <span className="text-indigo-600 text-xs font-semibold tracking-wide">투자 리스크 진단</span>
-          </div>
+          {/* 브랜드 라벨 — 뱃지가 아닌 텍스트 캡션으로 자연스럽게 카피를 소개 */}
+          <p className="text-indigo-500 text-xs font-semibold tracking-wider mb-4">
+            투자 리스크 진단
+          </p>
 
-          {/* 메인 카피 — h1 + 보조 카피를 한 단위로 묶음 */}
-          <h1 className="text-slate-900 text-[1.75rem] font-extrabold leading-tight tracking-tight mb-3">
-            지금 판단이 흔들린다면,<br />
-            먼저 내 상태부터 정리해보세요.
+          {/* 메인 카피 — 키커(조건절)와 헤드라인(결과절)을 시각적으로 분리해 위계 형성 */}
+          <h1 className="mb-4">
+            <span className="block text-slate-500 text-base font-medium leading-snug mb-1.5">
+              지금 판단이 흔들린다면,
+            </span>
+            <span className="block text-slate-900 text-[1.875rem] font-extrabold leading-tight tracking-tight">
+              먼저 내 상태부터<br />정리해보세요.
+            </span>
           </h1>
 
-          <p className="text-slate-400 text-[0.8125rem] leading-relaxed mb-7">
+          {/* 보조 카피 */}
+          <p className="text-slate-400 text-[0.8125rem] leading-relaxed mb-6">
             몇 가지 질문으로 지금 상태를 차분히 정리해드려요.
           </p>
 
@@ -60,14 +64,14 @@ export default function HomePage() {
           </p>
         </div>
 
-        {/* 공감 패널 — 히어로 연장선, 좌측 선 강조 */}
+        {/* 공감 패널 — bg-white/50 카드로 존재감 회복, 인디고 좌측 선으로 히어로 색조 연결 */}
         <div className="max-w-lg mx-auto px-6 pt-5 pb-10 border-t border-slate-200/40">
-          <p className="text-slate-400 text-xs mb-4">혹시 지금 이런 마음인가요?</p>
-          <div className="space-y-3.5">
+          <p className="text-slate-400 text-xs mb-3">혹시 지금 이런 마음인가요?</p>
+          <div className="bg-white/50 rounded-2xl px-5 py-4 space-y-3.5">
             {empathyItems.map((item, i) => (
               <p
                 key={i}
-                className="text-slate-500 text-[0.8125rem] leading-relaxed pl-3.5 border-l border-slate-300/50"
+                className="text-slate-600 text-sm leading-relaxed pl-3 border-l border-indigo-200"
               >
                 {item}
               </p>
