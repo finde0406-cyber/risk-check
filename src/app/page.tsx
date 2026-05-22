@@ -29,40 +29,38 @@ export default function HomePage() {
       {/* ── 첫 장면 패널 ── */}
       <section className="bg-[#F7F8FF]">
 
-        {/* 히어로 */}
-        <div className="flex flex-col items-center text-center max-w-lg mx-auto px-6 pt-14 pb-9">
+        {/* 히어로 패널 — 라벨·카피·CTA를 흰 패널로 묶어 "장면"으로 전환 */}
+        <div className="max-w-lg mx-auto px-5 pt-8 pb-6">
+          <div className="bg-white/70 rounded-3xl px-7 py-10 flex flex-col items-center text-center shadow-[0_4px_20px_rgba(0,0,0,0.07)]">
 
-          {/* 에디토리얼 아이브로 라벨 — 더 작고 트래킹 넓게, 카피를 소개하는 조용한 앵커 */}
-          <p className="text-indigo-600 text-sm font-bold tracking-[0.1em] mb-5">
-            투자 리스크 진단
-          </p>
+            <p className="text-indigo-600 text-sm font-bold tracking-[0.1em] mb-5">
+              투자 리스크 진단
+            </p>
 
-          {/* 메인 카피 — 키커(조건절) slate-400 normal로 후퇴 + 헤드라인(결과절) 32px extrabold, 대비 강화 */}
-          <h1 className="mb-4">
-            <span className="block text-slate-400 text-base font-normal leading-snug mb-2">
-              지금 판단이 흔들린다면,
-            </span>
-            <span className="block text-slate-900 text-[2rem] font-extrabold leading-[1.15] tracking-tight">
-              먼저 내 상태부터<br />정리해보세요.
-            </span>
-          </h1>
+            <h1 className="mb-4">
+              <span className="block text-slate-400 text-base font-normal leading-snug mb-2">
+                지금 판단이 흔들린다면,
+              </span>
+              <span className="block text-slate-900 text-[2rem] font-extrabold leading-[1.15] tracking-tight">
+                먼저 내 상태부터<br />정리해보세요.
+              </span>
+            </h1>
 
-          {/* 보조 카피 */}
-          <p className="text-slate-400 text-[0.8125rem] leading-relaxed mb-5">
-            몇 가지 질문으로 지금 상태를 차분히 정리해드려요.
-          </p>
+            <p className="text-slate-400 text-[0.8125rem] leading-relaxed mb-6">
+              몇 가지 질문으로 지금 상태를 차분히 정리해드려요.
+            </p>
 
-          {/* CTA — 그림자 아주 소폭 정제, 디스클레이머와 간격 정교화 */}
-          <Link
-            href="/diagnosis/investment-risk"
-            className="block w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm py-4 rounded-2xl text-center transition-colors shadow-[0_4px_14px_rgba(79,70,229,0.22)]"
-          >
-            내 투자 리스크 진단하기
-          </Link>
+            <Link
+              href="/diagnosis/investment-risk"
+              className="block w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm py-4 rounded-2xl text-center transition-colors shadow-[0_4px_14px_rgba(79,70,229,0.25)]"
+            >
+              내 투자 리스크 진단하기
+            </Link>
 
-          <p className="text-slate-400 text-xs mt-3.5">
-            투자 조언이 아니라, 현재 상태를 차분히 정리해보기 위한 도구예요.
-          </p>
+            <p className="text-slate-400 text-xs mt-3.5">
+              투자 조언이 아니라, 현재 상태를 차분히 정리해보기 위한 도구예요.
+            </p>
+          </div>
         </div>
 
         {/* 공감 패널 — 배경 불투명도·여백·border 두께 소폭 강화로 존재감 회복 */}
