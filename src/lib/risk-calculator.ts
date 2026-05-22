@@ -15,12 +15,24 @@ export interface DiagnosisResult {
   activeTags: string[];
 }
 
-const LEVEL_THRESHOLDS: { level: RiskLevel; minPercent: number }[] = [
-  { level: "high_risk", minPercent: 65 },
-  { level: "risk", minPercent: 40 },
-  { level: "caution", minPercent: 20 },
-  { level: "stable", minPercent: 0 },
-];
+const FORCE_RISK_TAGS = [
+  "forced_liquidation",
+  "crypto_futures",
+  "leverage",
+  "debt_investing",
+  "debt_risk",
+  "credit_trading",
+] as const;
+
+const FORCE_HIGH_RISK_TAGS = [
+  "forced_liquidation",
+  "crypto_futures",
+  "leverage",
+  "debt_investing",
+  "debt_risk",
+  "low_cash",
+  "repeated_averaging_down",
+] as const;
 
 export function calculateRisk(answers: DiagnosisAnswers): DiagnosisResult {
   let totalScore = 0;
@@ -46,21 +58,28 @@ export function calculateRisk(answers: DiagnosisAnswers): DiagnosisResult {
 
   const scorePercent = maxScore > 0 ? (totalScore / maxScore) * 100 : 0;
 
-  // 강한 위험 태그가 있으면 최소 risk 구간 보장
-  const hasHighRiskTag =
-    (tagCounts["forced_liquidation"] ?? 0) >= 2 ||
-    (tagCounts["leverage"] ?? 0) >= 2;
-
-  let level: RiskLevel = "stable";
-  for (const threshold of LEVEL_THRESHOLDS) {
-    if (scorePercent >= threshold.minPercent) {
-      level = threshold.level;
-      break;
-    }
+  let level: RiskLevel;
+  if (totalScore >= 19) {
+    level = "high_risk";
+  } else if (totalScore >= 12) {
+    level = "risk";
+  } else if (totalScore >= 6) {
+    level = "caution";
+  } else {
+    level = "stable";
   }
 
-  if (hasHighRiskTag && level === "caution") level = "risk";
-  if (hasHighRiskTag && level === "stable") level = "caution";
+  const forceRiskTagCount = FORCE_RISK_TAGS.reduce((count, tag) => {
+    return count + ((tagCounts[tag] ?? 0) > 0 ? 1 : 0);
+  }, 0);
+
+  const forceHighRiskTagCount = FORCE_HIGH_RISK_TAGS.reduce((count, tag) => {
+    return count + ((tagCounts[tag] ?? 0) > 0 ? 1 : 0);
+  }, 0);
+
+  if (forceRiskTagCount >= 2 && level === "stable") level = "risk";
+  if (forceRiskTagCount >= 2 && level === "caution") level = "risk";
+  if (forceHighRiskTagCount >= 3) level = "high_risk";
 
   // 상위 3개 태그 추출 (빈도 높은 순)
   const activeTags = Object.entries(tagCounts)
