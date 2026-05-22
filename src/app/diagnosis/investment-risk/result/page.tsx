@@ -16,13 +16,6 @@ const BADGE_STYLES: Record<string, { bg: string; border: string; dot: string; te
   red:     { bg: "bg-red-50",     border: "border-red-200",     dot: "bg-red-500",     text: "text-red-700" },
 };
 
-const BAR_COLOR: Record<string, string> = {
-  emerald: "bg-emerald-500",
-  amber:   "bg-amber-500",
-  orange:  "bg-orange-500",
-  red:     "bg-red-500",
-};
-
 const PRIORITY_GUIDE: Record<string, { title: string; bullets: string[] }> = {
   main_risk: {
     title: "지금 가장 위험한 부분부터 짚어볼게요.",
@@ -82,7 +75,6 @@ function ResultContent() {
 
   const riskResult = riskResults[result.level];
   const badge = BADGE_STYLES[riskResult.badgeColor] ?? BADGE_STYLES.amber;
-  const barColor = BAR_COLOR[riskResult.badgeColor] ?? "bg-slate-400";
   const contents = relatedContentByLevel[result.level];
   const priorityGuide = result.priority ? PRIORITY_GUIDE[result.priority] : null;
 
@@ -147,14 +139,6 @@ function ResultContent() {
           <p className="text-slate-600 text-sm leading-relaxed">
             {riskResult.summary}
           </p>
-          <div className="mt-5">
-            <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden">
-              <div
-                className={`h-full ${barColor} rounded-full transition-all duration-700`}
-                style={{ width: `${result.scorePercent}%` }}
-              />
-            </div>
-          </div>
         </section>
 
         {/* ② 우선 가이드 (Q6 기반 개인화) */}
@@ -181,8 +165,8 @@ function ResultContent() {
         )}
 
         {/* ④ 먼저 확인할 기준 (정리 중심, 금지보다 앞) */}
-        <section className="bg-white rounded-2xl border border-slate-200 p-5">
-          <h2 className="text-slate-800 font-semibold text-sm mb-3">
+        <section className="bg-white rounded-2xl border border-slate-300 p-5">
+          <h2 className="text-slate-900 font-bold text-sm mb-3">
             먼저 이 기준부터 확인해보세요.
           </h2>
           <ul className="space-y-2.5">
@@ -197,34 +181,34 @@ function ResultContent() {
           </ul>
         </section>
 
-        {/* ⑤ 가장 조심할 부분 */}
-        <section className="bg-white rounded-2xl border border-slate-200 p-5">
-          <h2 className="text-slate-800 font-semibold text-sm mb-3">
-            지금 가장 조심해서 봐야 할 부분이에요.
-          </h2>
-          <ul className="space-y-2.5">
-            {riskResult.watchOut.map((item, i) => (
-              <li key={i} className="flex items-start gap-3">
-                <span className="mt-1.5 shrink-0 w-1 h-1 rounded-full bg-orange-400" />
-                <span className="text-slate-700 text-sm leading-relaxed">{item}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        {/* ⑥ 피해야 할 행동 */}
-        <section className="bg-white rounded-2xl border border-slate-200 p-5">
-          <h2 className="text-slate-800 font-semibold text-sm mb-3">
-            지금은 이런 행동은 피하는 게 좋아요.
-          </h2>
-          <ul className="space-y-2.5">
-            {riskResult.avoidActions.map((item, i) => (
-              <li key={i} className="flex items-start gap-3">
-                <span className="mt-0.5 shrink-0 text-slate-300 text-sm font-bold leading-relaxed">—</span>
-                <span className="text-slate-700 text-sm leading-relaxed">{item}</span>
-              </li>
-            ))}
-          </ul>
+        {/* ⑤ 조심할 부분 + 피해야 할 행동 — 통합 경량 카드 */}
+        <section className="bg-slate-50 rounded-2xl border border-slate-100 p-5">
+          <div className="mb-4">
+            <h2 className="text-slate-500 font-medium text-xs mb-2.5">
+              가장 조심할 부분
+            </h2>
+            <ul className="space-y-2">
+              {riskResult.watchOut.map((item, i) => (
+                <li key={i} className="flex items-start gap-3">
+                  <span className="mt-1.5 shrink-0 w-1 h-1 rounded-full bg-orange-400" />
+                  <span className="text-slate-600 text-sm leading-relaxed">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="border-t border-slate-200 pt-4">
+            <h2 className="text-slate-500 font-medium text-xs mb-2.5">
+              피해야 할 행동
+            </h2>
+            <ul className="space-y-2">
+              {riskResult.avoidActions.map((item, i) => (
+                <li key={i} className="flex items-start gap-3">
+                  <span className="mt-0.5 shrink-0 text-slate-300 text-sm font-bold leading-relaxed">—</span>
+                  <span className="text-slate-600 text-sm leading-relaxed">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </section>
 
         {/* ⑦ 금융리스크랩 관련 읽을거리 */}

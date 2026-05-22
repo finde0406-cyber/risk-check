@@ -24,16 +24,15 @@ export default function DiagnosisPage() {
   const selected = answers[question.id] ?? null;
 
   function handleSelect(optionId: string) {
-    setAnswers((prev) => ({ ...prev, [question.id]: optionId }));
-  }
-
-  function handleNext() {
-    if (!selected) return;
-    if (isLast) {
-      router.push(`/diagnosis/investment-risk/result?answers=${encodeAnswers(answers)}`);
-      return;
-    }
-    setCurrentStep((prev) => prev + 1);
+    const newAnswers = { ...answers, [question.id]: optionId };
+    setAnswers(newAnswers);
+    setTimeout(() => {
+      if (isLast) {
+        router.push(`/diagnosis/investment-risk/result?answers=${encodeAnswers(newAnswers)}`);
+      } else {
+        setCurrentStep((s) => s + 1);
+      }
+    }, 280);
   }
 
   function handleBack() {
@@ -96,28 +95,15 @@ export default function DiagnosisPage() {
           })}
         </div>
 
-        {/* 하단 버튼 */}
-        <div className="flex gap-2.5">
-          {currentStep > 0 && (
-            <button
-              onClick={handleBack}
-              className="w-20 py-4 rounded-xl border border-slate-200 text-slate-500 text-sm font-medium hover:bg-slate-50 transition-colors"
-            >
-              이전
-            </button>
-          )}
+        {/* 이전 버튼 */}
+        {currentStep > 0 && (
           <button
-            onClick={handleNext}
-            disabled={!selected}
-            className={`flex-1 py-4 rounded-xl text-sm font-semibold transition-colors ${
-              selected
-                ? "bg-indigo-600 hover:bg-indigo-700 text-white"
-                : "bg-slate-100 text-slate-400 cursor-not-allowed"
-            }`}
+            onClick={handleBack}
+            className="w-full py-3.5 rounded-xl border border-slate-200 text-slate-500 text-sm font-medium hover:bg-slate-50 transition-colors"
           >
-            {isLast ? "결과 확인하기" : "다음으로"}
+            이전
           </button>
-        </div>
+        )}
 
         <p className="text-slate-400 text-xs mt-6 text-center">
           투자 조언이 아니라, 현재 상황을 차분히 정리해보기 위한 도구예요.
