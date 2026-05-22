@@ -24,44 +24,45 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* 히어로 */}
-      <section className="max-w-lg mx-auto px-5 pt-10 pb-10">
-        {/* 리스크 단계 게이지 — 서비스 성격을 텍스트 없이 전달 */}
-        <div className="mb-8">
-          <div className="flex gap-0.5 h-1 rounded-full overflow-hidden mb-2.5">
-            <div className="flex-1 bg-emerald-400 rounded-l-full" />
-            <div className="flex-1 bg-amber-400" />
-            <div className="flex-1 bg-orange-400" />
-            <div className="flex-1 bg-red-400 rounded-r-full" />
+      {/* 히어로 — 연한 인디고 배경으로 히어로 포드 분리 */}
+      <section className="bg-[#F7F8FF]">
+        <div className="max-w-lg mx-auto px-5 pt-11 pb-10">
+
+          {/* 4단계 리스크 레벨 오브제 — 기능 UI가 아니라 브랜드 마크로 */}
+          <div className="flex items-center mb-9">
+            {["bg-emerald-400", "bg-amber-400", "bg-orange-400", "bg-red-400"].map((color, i) => (
+              <div key={i} className="flex items-center">
+                {i > 0 && <div className="w-10 h-px bg-slate-200" />}
+                <div className={`w-3 h-3 rounded-full ${color} opacity-80`} />
+              </div>
+            ))}
           </div>
-          <div className="flex justify-between text-slate-300 text-xs">
-            <span>안정</span>
-            <span>주의</span>
-            <span>위험</span>
-            <span>경고</span>
-          </div>
+
+          <h1
+            className="text-slate-900 text-3xl font-extrabold leading-tight tracking-tight mb-4"
+            style={{ textWrap: "balance" } as React.CSSProperties}
+          >
+            지금 판단이 흔들린다면,<br />
+            먼저 내 상태부터 정리해볼 수 있어요.
+          </h1>
+          <p className="text-slate-500 text-sm leading-relaxed mb-8 max-w-sm">
+            몇 가지 질문만으로 현재 리스크와 먼저 확인해야 할 기준을 차분히 정리해드려요.
+          </p>
+
+          <Link
+            href="/diagnosis/investment-risk"
+            className="block w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm py-4 rounded-xl transition-colors shadow-[0_4px_14px_rgba(79,70,229,0.28)]"
+          >
+            내 투자 리스크 진단하기
+          </Link>
+          <p className="text-slate-400 text-xs mt-3.5 text-center">
+            투자 조언이 아니라, 현재 상태를 차분히 정리해보기 위한 리스크 체크예요.
+          </p>
         </div>
-
-        <h1 className="text-slate-900 text-[1.85rem] font-bold leading-tight mb-4">
-          지금 판단이<br />흔들린다면.
-        </h1>
-        <p className="text-slate-500 text-sm leading-relaxed mb-8 max-w-sm">
-          몇 가지 질문으로 현재 리스크 상태와 지금 먼저 확인해야 할 기준을 정리해드려요.
-        </p>
-
-        <Link
-          href="/diagnosis/investment-risk"
-          className="block w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm py-4 rounded-xl transition-colors"
-        >
-          내 투자 리스크 진단하기
-        </Link>
-        <p className="text-slate-400 text-xs mt-3.5 text-center">
-          투자 조언이 아니라, 지금 상태를 차분히 정리해보기 위한 리스크 체크예요.
-        </p>
       </section>
 
       {/* 공감 포인트 */}
-      <section className="border-t border-slate-100 bg-slate-50">
+      <section className="border-t border-slate-100">
         <div className="max-w-lg mx-auto px-5 py-7">
           <p className="text-slate-400 text-xs mb-3">혹시 지금 이런 마음인가요?</p>
           <ul className="space-y-2">
