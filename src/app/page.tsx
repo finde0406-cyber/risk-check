@@ -17,11 +17,12 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-white">
 
-      {/* 헤더 */}
-      <header className="bg-white border-b border-slate-100">
+      {/* 헤더 — font-bold + 중점 구분자로 브랜드 위계 강화 */}
+      <header className="bg-white border-b border-slate-200/70">
         <div className="max-w-lg mx-auto px-5 py-4 flex items-center">
-          <span className="text-slate-900 font-semibold text-sm tracking-tight">리스크체크</span>
-          <span className="text-slate-400 text-xs ml-2">by 금융리스크랩</span>
+          <span className="text-slate-900 font-bold text-sm tracking-tight">리스크체크</span>
+          <span className="text-slate-300 mx-2.5 text-sm" aria-hidden="true">·</span>
+          <span className="text-slate-400 text-xs">금융리스크랩</span>
         </div>
       </header>
 
@@ -31,47 +32,47 @@ export default function HomePage() {
         {/* 히어로 */}
         <div className="flex flex-col items-center text-center max-w-lg mx-auto px-6 pt-14 pb-9">
 
-          {/* 브랜드 라벨 — 뱃지가 아닌 텍스트 캡션으로 자연스럽게 카피를 소개 */}
-          <p className="text-indigo-500 text-xs font-semibold tracking-wider mb-4">
+          {/* 에디토리얼 아이브로 라벨 — 더 작고 트래킹 넓게, 카피를 소개하는 조용한 앵커 */}
+          <p className="text-indigo-500 text-[0.6875rem] font-bold tracking-[0.2em] mb-5">
             투자 리스크 진단
           </p>
 
-          {/* 메인 카피 — 키커(조건절)와 헤드라인(결과절)을 시각적으로 분리해 위계 형성 */}
+          {/* 메인 카피 — 키커(조건절) slate-500 + 헤드라인(결과절) slate-900, leading 정교화 */}
           <h1 className="mb-4">
-            <span className="block text-slate-500 text-base font-medium leading-snug mb-1.5">
+            <span className="block text-slate-500 text-base font-medium leading-snug mb-2">
               지금 판단이 흔들린다면,
             </span>
-            <span className="block text-slate-900 text-[1.875rem] font-extrabold leading-tight tracking-tight">
+            <span className="block text-slate-900 text-[1.875rem] font-extrabold leading-[1.15] tracking-tight">
               먼저 내 상태부터<br />정리해보세요.
             </span>
           </h1>
 
           {/* 보조 카피 */}
-          <p className="text-slate-400 text-[0.8125rem] leading-relaxed mb-6">
+          <p className="text-slate-400 text-[0.8125rem] leading-relaxed mb-5">
             몇 가지 질문으로 지금 상태를 차분히 정리해드려요.
           </p>
 
-          {/* CTA */}
+          {/* CTA — 그림자 아주 소폭 정제, 디스클레이머와 간격 정교화 */}
           <Link
             href="/diagnosis/investment-risk"
-            className="block w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm py-4 rounded-2xl text-center transition-colors shadow-[0_4px_16px_rgba(79,70,229,0.26)]"
+            className="block w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm py-4 rounded-2xl text-center transition-colors shadow-[0_4px_14px_rgba(79,70,229,0.22)]"
           >
             내 투자 리스크 진단하기
           </Link>
 
-          <p className="text-slate-400 text-xs mt-3">
+          <p className="text-slate-400 text-xs mt-3.5">
             투자 조언이 아니라, 현재 상태를 차분히 정리해보기 위한 도구예요.
           </p>
         </div>
 
-        {/* 공감 패널 — bg-white/50 카드로 존재감 회복, 인디고 좌측 선으로 히어로 색조 연결 */}
-        <div className="max-w-lg mx-auto px-6 pt-5 pb-10 border-t border-slate-200/40">
+        {/* 공감 패널 — 배경 불투명도·여백·border 두께 소폭 강화로 존재감 회복 */}
+        <div className="max-w-lg mx-auto px-6 pt-5 pb-10 border-t border-slate-200/60">
           <p className="text-slate-400 text-xs mb-3">혹시 지금 이런 마음인가요?</p>
-          <div className="bg-white/50 rounded-2xl px-5 py-4 space-y-3.5">
+          <div className="bg-white/60 rounded-2xl px-5 py-5 space-y-4 shadow-[0_1px_4px_rgba(0,0,0,0.04)]">
             {empathyItems.map((item, i) => (
               <p
                 key={i}
-                className="text-slate-600 text-sm leading-relaxed pl-3 border-l border-indigo-200"
+                className="text-slate-600 text-sm leading-relaxed pl-3.5 border-l-2 border-indigo-200/70"
               >
                 {item}
               </p>
@@ -80,14 +81,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3단계 흐름 */}
+      {/* 3단계 흐름 — 라벨 톤 강화 + 뱃지 인디고 소폭 올려 히어로 흐름 연결 */}
       <section className="border-t border-slate-100 bg-white">
         <div className="max-w-lg mx-auto px-5 pt-8 pb-7">
-          <p className="text-slate-400 text-xs mb-4">이렇게 진행돼요.</p>
+          <p className="text-slate-500 text-xs font-medium tracking-wide mb-4">이렇게 진행돼요.</p>
           <div className="space-y-3">
             {steps.map((s) => (
               <div key={s.n} className="flex items-center gap-3">
-                <span className="shrink-0 w-7 h-7 rounded-lg bg-indigo-50 text-indigo-500 text-xs font-bold flex items-center justify-center">
+                <span className="shrink-0 w-7 h-7 rounded-lg bg-indigo-100 text-indigo-600 text-xs font-bold flex items-center justify-center">
                   {s.n}
                 </span>
                 <span className="text-slate-600 text-sm">{s.label}</span>
