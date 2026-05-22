@@ -18,42 +18,52 @@ export default function HomePage() {
     <main className="min-h-screen bg-white">
       {/* 헤더 */}
       <header className="border-b border-slate-100">
-        <div className="max-w-2xl mx-auto px-5 py-4 flex items-center">
+        <div className="max-w-lg mx-auto px-5 py-4 flex items-center">
           <span className="text-slate-900 font-semibold text-sm tracking-tight">리스크체크</span>
           <span className="text-slate-400 text-xs ml-2">by 금융리스크랩</span>
         </div>
       </header>
 
-      {/* 히어로 — 첫 화면에서 카피 + CTA까지 전부 노출 */}
-      <section className="max-w-2xl mx-auto px-5 pt-12 pb-10">
-        <p className="text-indigo-500 text-xs font-semibold tracking-widest mb-5 uppercase">
-          투자 리스크 진단
-        </p>
-        <h1
-          className="text-slate-900 text-2xl md:text-[2rem] font-bold leading-snug mb-4"
-          style={{ textWrap: "balance" } as React.CSSProperties}
-        >
-          지금 뭘 해야 할지 모르겠다면,<br />
-          무엇부터 봐야 하는지부터 정리해볼 수 있어요.
+      {/* 히어로 */}
+      <section className="max-w-lg mx-auto px-5 pt-10 pb-10">
+        {/* 리스크 단계 게이지 — 서비스 성격을 텍스트 없이 전달 */}
+        <div className="mb-8">
+          <div className="flex gap-0.5 h-1 rounded-full overflow-hidden mb-2.5">
+            <div className="flex-1 bg-emerald-400 rounded-l-full" />
+            <div className="flex-1 bg-amber-400" />
+            <div className="flex-1 bg-orange-400" />
+            <div className="flex-1 bg-red-400 rounded-r-full" />
+          </div>
+          <div className="flex justify-between text-slate-300 text-xs">
+            <span>안정</span>
+            <span>주의</span>
+            <span>위험</span>
+            <span>경고</span>
+          </div>
+        </div>
+
+        <h1 className="text-slate-900 text-[1.85rem] font-bold leading-tight mb-4">
+          지금 판단이<br />흔들린다면.
         </h1>
-        <p className="text-slate-500 text-sm leading-relaxed mb-8 max-w-md">
-          손실, 물타기, 레버리지처럼 복잡한 상황에서는 정답보다 먼저 기준이 필요할 수 있어요.
+        <p className="text-slate-500 text-sm leading-relaxed mb-8 max-w-sm">
+          몇 가지 질문으로 현재 리스크 상태와 지금 먼저 확인해야 할 기준을 정리해드려요.
         </p>
+
         <Link
           href="/diagnosis/investment-risk"
-          className="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm px-6 py-3.5 rounded-xl transition-colors"
+          className="block w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm py-4 rounded-xl transition-colors"
         >
           내 투자 리스크 진단하기
         </Link>
-        <p className="text-slate-400 text-xs mt-4 leading-relaxed">
+        <p className="text-slate-400 text-xs mt-3.5 text-center">
           투자 조언이 아니라, 지금 상태를 차분히 정리해보기 위한 리스크 체크예요.
         </p>
       </section>
 
       {/* 공감 포인트 */}
       <section className="border-t border-slate-100 bg-slate-50">
-        <div className="max-w-2xl mx-auto px-5 py-8">
-          <p className="text-slate-400 text-xs font-medium mb-3">혹시 지금 이런 마음인가요?</p>
+        <div className="max-w-lg mx-auto px-5 py-7">
+          <p className="text-slate-400 text-xs mb-3">혹시 지금 이런 마음인가요?</p>
           <ul className="space-y-2">
             {empathyItems.map((item, i) => (
               <li key={i} className="flex items-center gap-2.5">
@@ -67,8 +77,8 @@ export default function HomePage() {
 
       {/* 3단계 흐름 */}
       <section className="border-t border-slate-100">
-        <div className="max-w-2xl mx-auto px-5 py-8">
-          <p className="text-slate-400 text-xs font-medium mb-4">이렇게 진행돼요.</p>
+        <div className="max-w-lg mx-auto px-5 py-7">
+          <p className="text-slate-400 text-xs mb-4">이렇게 진행돼요.</p>
           <div className="space-y-3">
             {steps.map((s) => (
               <div key={s.n} className="flex items-center gap-3">
@@ -84,7 +94,7 @@ export default function HomePage() {
 
       {/* 머니플로우레이더 */}
       <section className="border-t border-slate-100 bg-slate-50">
-        <div className="max-w-2xl mx-auto px-5 py-8">
+        <div className="max-w-lg mx-auto px-5 py-7">
           <div className="bg-slate-800 rounded-2xl px-5 py-5">
             <p className="text-white text-sm font-semibold mb-1.5 leading-snug">
               내 상황을 정리했다면, 시장 흐름도 함께 보는 게 좋아요.
@@ -106,7 +116,7 @@ export default function HomePage() {
 
       {/* 푸터 */}
       <footer className="border-t border-slate-100">
-        <div className="max-w-2xl mx-auto px-5 py-5">
+        <div className="max-w-lg mx-auto px-5 py-5">
           <p className="text-slate-400 text-xs leading-relaxed">
             이 서비스는 투자 조언이나 투자 권유를 목적으로 하지 않아요. 모든 투자 결정은 본인 판단과 책임 하에 이루어져야 해요.
           </p>

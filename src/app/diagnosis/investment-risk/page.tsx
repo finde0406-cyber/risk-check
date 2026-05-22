@@ -1,7 +1,7 @@
 'use client';
 // 투자 리스크 진단 질문 플로우 페이지
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { questions } from "@/data/questions";
@@ -11,6 +11,11 @@ export default function DiagnosisPage() {
   const router = useRouter();
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<DiagnosisAnswers>({});
+
+  // 스텝 전환 시 항상 최상단에서 시작
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentStep]);
 
   const question = questions[currentStep];
   const totalSteps = questions.length;
