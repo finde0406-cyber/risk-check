@@ -17,7 +17,7 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-white">
 
-      {/* 헤더 — font-bold + 중점 구분자로 브랜드 위계 강화 */}
+      {/* 헤더 */}
       <header className="bg-white border-b border-slate-200/70">
         <div className="max-w-lg mx-auto px-5 py-4 flex items-center">
           <span className="text-slate-900 font-bold text-sm tracking-tight">리스크체크</span>
@@ -26,60 +26,52 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* ── 첫 장면 패널 ── */}
+      {/* ── 첫 화면 — 좌측 정렬, 카드 제거, 공감 통합 ── */}
       <section className="bg-[#F7F8FF]">
+        <div className="max-w-lg mx-auto px-6 pt-14 pb-12">
 
-        {/* 히어로 패널 — 라벨·카피·CTA를 흰 패널로 묶어 "장면"으로 전환 */}
-        <div className="max-w-lg mx-auto px-5 pt-8 pb-6">
-          <div className="bg-white/70 rounded-3xl px-7 py-10 flex flex-col items-center text-center shadow-[0_4px_20px_rgba(0,0,0,0.07)]">
+          {/* 브랜드 라벨 */}
+          <p className="text-indigo-500 text-xs font-semibold tracking-[0.14em] mb-8">
+            투자 리스크 진단
+          </p>
 
-            <p className="text-indigo-600 text-sm font-bold tracking-[0.1em] mb-5">
-              투자 리스크 진단
+          {/* 카피 블록 — 좌측 정렬, 키커 → 헤드라인 자연스러운 흐름 */}
+          <div className="mb-7">
+            <p className="text-slate-400 text-base font-normal leading-normal mb-1.5">
+              지금 판단이 흔들린다면,
             </p>
-
-            <h1 className="mb-5">
-              <span className="block text-slate-500 text-base font-normal leading-snug mb-3">
-                지금 판단이 흔들린다면,
-              </span>
-              <span className="block text-slate-900 text-[1.875rem] font-bold leading-tight tracking-tight">
-                먼저 내 상태부터<br />정리해보세요.
-              </span>
+            <h1 className="text-slate-900 text-[2.25rem] font-bold leading-[1.2] tracking-tight">
+              먼저 내 상태부터<br />정리해보세요.
             </h1>
-
-            <p className="text-slate-400 text-[0.8125rem] leading-relaxed mb-6">
-              몇 가지 질문으로 지금 상태를 차분히 정리해드려요.
-            </p>
-
-            <Link
-              href="/diagnosis/investment-risk"
-              className="block w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm py-4 rounded-2xl text-center transition-colors shadow-[0_4px_14px_rgba(79,70,229,0.25)]"
-            >
-              내 투자 리스크 진단하기
-            </Link>
-
-            <p className="text-slate-400 text-xs mt-3.5">
-              투자 조언이 아니라, 현재 상태를 차분히 정리해보기 위한 도구예요.
-            </p>
           </div>
-        </div>
 
-        {/* 공감 패널 — 배경 불투명도·여백·border 두께 소폭 강화로 존재감 회복 */}
-        <div className="max-w-lg mx-auto px-6 pt-5 pb-10 border-t border-slate-200/60">
-          <p className="text-slate-400 text-xs mb-3">혹시 지금 이런 마음인가요?</p>
-          <div className="bg-white/60 rounded-2xl px-5 py-5 space-y-4 shadow-[0_1px_4px_rgba(0,0,0,0.04)]">
-            {empathyItems.map((item, i) => (
-              <p
-                key={i}
-                className="text-slate-600 text-sm leading-relaxed pl-3.5 border-l-2 border-indigo-200/70"
-              >
-                {item}
-              </p>
-            ))}
+          {/* 공감 블록 — 카피와 CTA 사이 감정 확인 지점, 흐름의 일부 */}
+          <div className="mb-8">
+            <p className="text-slate-400 text-xs mb-3">혹시 지금 이런 마음인가요?</p>
+            <div className="space-y-2.5">
+              {empathyItems.map((item, i) => (
+                <div key={i} className="flex items-center gap-2.5">
+                  <span className="w-1 h-1 rounded-full bg-slate-300 shrink-0" />
+                  <span className="text-slate-500 text-sm leading-snug">{item}</span>
+                </div>
+              ))}
+            </div>
           </div>
+
+          {/* CTA */}
+          <Link
+            href="/diagnosis/investment-risk"
+            className="block w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm py-[15px] rounded-2xl text-center transition-colors shadow-[0_4px_14px_rgba(79,70,229,0.25)]"
+          >
+            내 투자 리스크 진단하기
+          </Link>
+          <p className="text-slate-400 text-xs mt-3">
+            투자 조언이 아니라, 현재 상태를 차분히 정리해보기 위한 도구예요.
+          </p>
         </div>
       </section>
 
-      {/* 3단계 흐름 — 라벨 톤 강화 + 뱃지 인디고 소폭 올려 히어로 흐름 연결 */}
+      {/* 3단계 흐름 */}
       <section className="border-t border-slate-100 bg-white">
         <div className="max-w-lg mx-auto px-5 pt-8 pb-7">
           <p className="text-slate-500 text-xs font-medium tracking-wide mb-4">이렇게 진행돼요.</p>
