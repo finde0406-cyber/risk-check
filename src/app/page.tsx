@@ -33,7 +33,7 @@ export default function HomePage() {
         <div className="flex flex-col items-center text-center max-w-lg mx-auto px-6 pt-14 pb-9">
 
           {/* 에디토리얼 아이브로 라벨 — 더 작고 트래킹 넓게, 카피를 소개하는 조용한 앵커 */}
-          <p className="text-indigo-500 text-[0.6875rem] font-bold tracking-[0.2em] mb-5">
+          <p className="text-indigo-600 text-xs font-bold tracking-[0.16em] mb-5">
             투자 리스크 진단
           </p>
 
