@@ -220,13 +220,15 @@ function ResultContent() {
         {/* 6. 관련 콘텐츠 */}
         <section>
           <h2 className="text-slate-900 font-semibold text-base mb-4 px-1">
-            관련 내용도 살펴보세요.
+            금융리스크랩에서 관련 내용도 살펴보세요.
           </h2>
           <div className="space-y-3">
             {contents.map((content) => (
               <a
                 key={content.id}
                 href={content.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="block bg-white rounded-xl border border-slate-200 p-5 hover:border-slate-300 hover:shadow-sm transition-all"
               >
                 <div className="flex items-start justify-between gap-3">
