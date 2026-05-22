@@ -31,3 +31,11 @@
 - Checks run: `npm run build` passed, `npm run lint` passed
 - Open issues or next steps: Do a visual browser pass for mobile spacing and decide whether the personalized priority card should also influence the order of lower result sections.
 - Commit hash: pending commit creation
+
+## 2026-05-22 13:36:21 +09:00
+- Who: Codex
+- What changed: Reworked the landing page to feel less text-heavy and more emotionally engaging, while reducing visual density for mobile and tightening the card rhythm across the home experience.
+- Files touched: `WORKLOG.md`, `src/app/page.tsx`
+- Checks run: `npm run build` passed, `npm run lint` passed
+- Open issues or next steps: Re-check the landing page on a real phone browser if possible and decide whether the home empathy card or the trust section should be shortened further.
+- Commit hash: pending commit creation
