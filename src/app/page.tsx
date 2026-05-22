@@ -33,16 +33,16 @@ export default function HomePage() {
         <div className="flex flex-col items-center text-center max-w-lg mx-auto px-6 pt-14 pb-9">
 
           {/* 에디토리얼 아이브로 라벨 — 더 작고 트래킹 넓게, 카피를 소개하는 조용한 앵커 */}
-          <p className="text-indigo-600 text-xs font-bold tracking-[0.16em] mb-5">
+          <p className="text-indigo-600 text-sm font-bold tracking-[0.1em] mb-5">
             투자 리스크 진단
           </p>
 
-          {/* 메인 카피 — 키커(조건절) slate-500 + 헤드라인(결과절) slate-900, leading 정교화 */}
+          {/* 메인 카피 — 키커(조건절) slate-400 normal로 후퇴 + 헤드라인(결과절) 32px extrabold, 대비 강화 */}
           <h1 className="mb-4">
-            <span className="block text-slate-500 text-base font-medium leading-snug mb-2">
+            <span className="block text-slate-400 text-base font-normal leading-snug mb-2">
               지금 판단이 흔들린다면,
             </span>
-            <span className="block text-slate-900 text-[1.875rem] font-extrabold leading-[1.15] tracking-tight">
+            <span className="block text-slate-900 text-[2rem] font-extrabold leading-[1.15] tracking-tight">
               먼저 내 상태부터<br />정리해보세요.
             </span>
           </h1>
