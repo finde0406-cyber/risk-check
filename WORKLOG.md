@@ -47,3 +47,11 @@
 - Checks run: `npm run build` passed, `npm run lint` passed
 - Open issues or next steps: Do one more real-device pass for the result card vertical rhythm if the content list grows beyond the current set.
 - Commit hash: pending commit creation
+
+## 2026-05-23 19:05:05 +09:00
+- Who: Codex
+- What changed: Added five SEO diagnosis landing pages under `/diagnosis/[slug]`, wired page-specific metadata and related links, extended the sitemap, and visually QA'd the new landing experience against the existing risk-check tone.
+- Files touched: `WORKLOG.md`, `src/app/diagnosis/[slug]/page.tsx`, `src/app/sitemap.ts`, `src/data/seo-diagnosis-pages.ts`
+- Checks run: `npm run lint` passed, `npm run build` passed, local browser screenshots reviewed for `/diagnosis/stock-loss` and `/diagnosis/leverage-risk`
+- Open issues or next steps: After deployment, submit the five new landing URLs for indexing and watch Search Console to see which slugs begin receiving impressions first.
+- Commit hash: pending commit creation
