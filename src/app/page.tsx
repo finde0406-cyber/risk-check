@@ -31,13 +31,13 @@ export default function HomePage() {
         <div className="max-w-lg mx-auto px-6 pt-14 pb-12">
 
           {/* 브랜드 라벨 */}
-          <p className="text-indigo-500 text-xs font-semibold tracking-[0.14em] mb-8">
+          <p className="text-indigo-600 text-xs font-semibold tracking-[0.14em] mb-8">
             투자 리스크 진단
           </p>
 
           {/* 카피 블록 — 좌측 정렬, 키커 → 헤드라인 자연스러운 흐름 */}
           <div className="mb-7">
-            <p className="text-slate-400 text-base font-normal leading-normal mb-1.5">
+            <p className="text-slate-500 text-base font-normal leading-normal mb-1.5">
               지금 판단이 흔들린다면,
             </p>
             <h1 className="text-slate-900 text-[2.25rem] font-bold leading-[1.2] tracking-tight">
@@ -47,12 +47,12 @@ export default function HomePage() {
 
           {/* 공감 블록 — 카피와 CTA 사이 감정 확인 지점, 흐름의 일부 */}
           <div className="mb-8">
-            <p className="text-slate-400 text-xs mb-3">혹시 지금 이런 마음인가요?</p>
+            <p className="text-slate-500 text-xs font-medium mb-3">혹시 지금 이런 마음인가요?</p>
             <div className="space-y-2.5">
               {empathyItems.map((item, i) => (
                 <div key={i} className="flex items-center gap-2.5">
-                  <span className="w-1 h-1 rounded-full bg-slate-300 shrink-0" />
-                  <span className="text-slate-500 text-sm leading-snug">{item}</span>
+                  <span className="w-1 h-1 rounded-full bg-slate-400 shrink-0" />
+                  <span className="text-slate-600 text-sm leading-snug">{item}</span>
                 </div>
               ))}
             </div>
@@ -65,7 +65,7 @@ export default function HomePage() {
           >
             내 투자 리스크 진단하기
           </Link>
-          <p className="text-slate-400 text-xs mt-3">
+          <p className="text-slate-500 text-xs mt-3">
             투자 조언이 아니라, 현재 상태를 차분히 정리해보기 위한 도구예요.
           </p>
         </div>
