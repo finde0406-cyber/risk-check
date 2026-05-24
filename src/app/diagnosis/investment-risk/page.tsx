@@ -1,7 +1,7 @@
 'use client';
 // 투자 리스크 진단 질문 플로우 페이지
 
-import { useState, useEffect } from "react";
+import { useState, useLayoutEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { questions } from "@/data/questions";
@@ -12,9 +12,19 @@ export default function DiagnosisPage() {
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<DiagnosisAnswers>({});
 
+  function scrollStepToTop() {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }
+
   // 스텝 전환 시 항상 최상단에서 시작
-  useEffect(() => {
-    window.scrollTo(0, 0);
+  useLayoutEffect(() => {
+    const frame = window.requestAnimationFrame(() => {
+      scrollStepToTop();
+    });
+
+    return () => window.cancelAnimationFrame(frame);
   }, [currentStep]);
 
   const question = questions[currentStep];
@@ -26,6 +36,9 @@ export default function DiagnosisPage() {
   function handleSelect(optionId: string) {
     const newAnswers = { ...answers, [question.id]: optionId };
     setAnswers(newAnswers);
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
     setTimeout(() => {
       if (isLast) {
         router.push(`/diagnosis/investment-risk/result?answers=${encodeAnswers(newAnswers)}`);

@@ -55,3 +55,11 @@
 - Checks run: `npm run lint` passed, `npm run build` passed, local browser screenshots reviewed for `/diagnosis/stock-loss` and `/diagnosis/leverage-risk`
 - Open issues or next steps: After deployment, submit the five new landing URLs for indexing and watch Search Console to see which slugs begin receiving impressions first.
 - Commit hash: pending commit creation
+
+## 2026-05-24 16:57:31 +09:00
+- Who: Codex
+- What changed: Strengthened the diagnosis step scroll reset so each next question opens from the top on smaller mobile screens by using layout-timed scroll restoration and blurring the tapped option before advancing.
+- Files touched: `WORKLOG.md`, `src/app/diagnosis/investment-risk/page.tsx`
+- Checks run: `npm run lint` passed, `npm run build` passed
+- Open issues or next steps: Re-check on a small mobile viewport to confirm the next question now consistently opens from the top after selecting a lower-screen option.
+- Commit hash: pending commit creation
