@@ -2,9 +2,16 @@
 import Link from "next/link";
 
 const empathyItems = [
-  "손절해야 할지, 더 버텨야 할지 모르겠어요.",
+  "손절을 미뤄야 할지, 지금 정리해야 할지 모르겠어요.",
   "물타기를 해도 되는 건지 확신이 없어요.",
-  "누가 기준만 좀 정리해줬으면 좋겠어요.",
+  "버텨야 할지 정리해야 할지, 기준이 없어요.",
+];
+
+const statusTags = [
+  "손절을 미루고 있음",
+  "물타기 고민 중",
+  "버텨야 할지 모르겠음",
+  "기준 없이 대응 중",
 ];
 
 const steps = [
@@ -26,17 +33,17 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* ── 첫 화면 — 좌측 정렬, 카드 제거, 공감 통합 ── */}
+      {/* ── 첫 화면 ── */}
       <section className="bg-[#F7F8FF]">
-        <div className="max-w-lg mx-auto px-6 pt-14 pb-12">
+        <div className="max-w-lg mx-auto px-6 pt-10 pb-10">
 
           {/* 브랜드 라벨 */}
-          <p className="text-indigo-600 text-xs font-semibold tracking-[0.14em] mb-8">
+          <p className="text-indigo-600 text-xs font-semibold tracking-[0.14em] mb-5">
             투자 리스크 진단
           </p>
 
-          {/* 카피 블록 — 좌측 정렬, 키커 → 헤드라인 자연스러운 흐름 */}
-          <div className="mb-7">
+          {/* 카피 블록 */}
+          <div className="mb-5">
             <p className="text-slate-500 text-base font-normal leading-normal mb-1.5">
               지금 판단이 흔들린다면,
             </p>
@@ -45,8 +52,8 @@ export default function HomePage() {
             </h1>
           </div>
 
-          {/* 공감 블록 — 카피와 CTA 사이 감정 확인 지점, 흐름의 일부 */}
-          <div className="mb-8">
+          {/* 공감 블록 */}
+          <div className="mb-5">
             <p className="text-slate-500 text-xs font-medium mb-3">혹시 지금 이런 마음인가요?</p>
             <div className="space-y-2.5">
               {empathyItems.map((item, i) => (
@@ -58,16 +65,25 @@ export default function HomePage() {
             </div>
           </div>
 
+          {/* 상태 태그 */}
+          <div className="flex flex-wrap gap-2 mb-6">
+            {statusTags.map((tag) => (
+              <span
+                key={tag}
+                className="inline-flex items-center text-xs text-slate-600 bg-white border border-slate-200 rounded-full px-3 py-1.5 leading-none"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
           {/* CTA */}
           <Link
             href="/diagnosis/investment-risk"
             className="block w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm py-[15px] rounded-2xl text-center transition-colors shadow-[0_4px_14px_rgba(79,70,229,0.25)]"
           >
-            내 투자 리스크 진단하기
+            내 투자 상태 먼저 정리하기
           </Link>
-          <p className="text-slate-500 text-xs mt-3">
-            투자 조언이 아니라, 현재 상태를 차분히 정리해보기 위한 도구예요.
-          </p>
         </div>
       </section>
 
@@ -93,10 +109,10 @@ export default function HomePage() {
         <div className="max-w-lg mx-auto px-5 py-7">
           <div className="bg-slate-800 rounded-2xl px-5 py-5">
             <p className="text-white text-sm font-semibold mb-1.5 leading-snug">
-              내 상황을 정리했다면, 시장 흐름도 함께 보는 게 좋아요.
+              내 상태를 정리했다면, 지금 시장의 관심과 자금이 어디로 몰리는지도 함께 보세요.
             </p>
             <p className="text-slate-400 text-xs leading-relaxed mb-4">
-              주요 테마와 자금 흐름은 머니플로우레이더에서 이어서 확인해보세요.
+              돈과 관심이 몰리는 구간에는 과열, 레버리지, 청산 리스크도 함께 커질 수 있어요.
             </p>
             <a
               href="https://moneyflowradar.com"

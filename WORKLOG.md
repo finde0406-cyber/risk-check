@@ -63,3 +63,11 @@
 - Checks run: `npm run lint` passed, `npm run build` passed
 - Open issues or next steps: Re-check on a small mobile viewport to confirm the next question now consistently opens from the top after selecting a lower-screen option.
 - Commit hash: pending commit creation
+
+## 2026-05-28 16:52:35 +09:00
+- Who: Codex
+- What changed: Reviewed and accepted the MVP-level UX polish pass that tightened the home hero, strengthened empathy wording, added small state tags, updated the main CTA phrasing, and clarified why users should continue into MoneyFlow Radar after the diagnosis.
+- Files touched: `WORKLOG.md`, `src/app/page.tsx`, `src/app/diagnosis/investment-risk/result/page.tsx`
+- Checks run: `npm run lint` passed, `npm run build` passed
+- Open issues or next steps: Watch real user behavior to see whether the new state tags help first-click conversion, and consider a later consistency pass if the result-page MoneyFlow Radar explanation needs to match the home hero even more closely.
+- Commit hash: pending commit creation

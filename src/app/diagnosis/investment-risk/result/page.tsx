@@ -250,10 +250,10 @@ function ResultContent() {
         {/* ⑧ 머니플로우레이더 */}
         <section className="bg-slate-800 rounded-2xl px-5 py-5">
           <p className="text-white text-sm font-semibold mb-1.5 leading-snug">
-            내 상황을 정리했다면, 시장 흐름도 함께 보는 게 좋아요.
+            내 상태를 정리했다면, 지금 시장의 관심과 자금이 어디로 몰리는지도 함께 보세요.
           </p>
           <p className="text-slate-400 text-xs leading-relaxed mb-4">
-            주요 테마와 자금 흐름은 머니플로우레이더에서 이어서 확인해보세요.
+            돈과 관심이 몰리는 구간에는 과열, 레버리지, 청산 리스크도 함께 커질 수 있어요.
           </p>
           <a
             href="https://moneyflowradar.com"
