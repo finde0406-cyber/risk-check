@@ -71,3 +71,11 @@
 - Checks run: `npm run lint` passed, `npm run build` passed
 - Open issues or next steps: Watch real user behavior to see whether the new state tags help first-click conversion, and consider a later consistency pass if the result-page MoneyFlow Radar explanation needs to match the home hero even more closely.
 - Commit hash: pending commit creation
+
+## 2026-05-28 19:28:01 +09:00
+- Who: Codex
+- What changed: Added the Risk Check favicon assets from the provided desktop image using Next.js App Router file conventions so browser tabs and Apple touch icons can pick up the new branding.
+- Files touched: `WORKLOG.md`, `src/app/apple-icon.png`, `src/app/icon.png`
+- Checks run: pending `npm run lint`, pending `npm run build`
+- Open issues or next steps: After deployment, hard-refresh the production site and confirm the browser tab icon and mobile home-screen icon update as expected.
+- Commit hash: pending commit creation
