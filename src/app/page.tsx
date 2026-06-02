@@ -1,17 +1,11 @@
 // 리스크체크 메인 랜딩페이지
 import Link from "next/link";
 
-const empathyItems = [
-  "손절을 미뤄야 할지, 지금 정리해야 할지 모르겠어요.",
-  "물타기를 해도 되는 건지 확신이 없어요.",
-  "버텨야 할지 정리해야 할지, 기준이 없어요.",
-];
-
-const statusTags = [
-  "손절을 미루고 있음",
-  "물타기 고민 중",
-  "버텨야 할지 모르겠음",
-  "기준 없이 대응 중",
+const empathyCards = [
+  { text: "손절을\n미루고 있음", active: true },
+  { text: "물타기\n고민 중", active: false },
+  { text: "버텨야 할지\n모르겠음", active: false },
+  { text: "기준 없이\n대응 중", active: false },
 ];
 
 const steps = [
@@ -34,56 +28,66 @@ export default function HomePage() {
       </header>
 
       {/* ── 첫 화면 ── */}
-      <section className="bg-[#F7F8FF]">
-        <div className="max-w-lg mx-auto px-6 pt-10 pb-10">
+      <section className="bg-slate-900">
+        <div className="max-w-lg mx-auto px-6 pt-10 pb-9">
 
           {/* 브랜드 라벨 */}
-          <p className="text-indigo-600 text-xs font-semibold tracking-[0.14em] mb-5">
-            투자 리스크 진단
-          </p>
+          <div className="mb-5">
+            <p className="inline-flex items-center rounded-full border border-indigo-400/30 bg-indigo-400/10 px-3 py-1 text-[10px] font-bold tracking-[0.16em] text-indigo-300 uppercase">
+              투자 리스크 진단
+            </p>
+          </div>
 
           {/* 카피 블록 */}
-          <div className="mb-5">
-            <p className="text-slate-500 text-base font-normal leading-normal mb-1.5">
-              지금 판단이 흔들린다면,
+          <div className="mb-7">
+            <p className="text-slate-400 text-sm font-medium leading-relaxed mb-2">
+              판단이 흔들릴 때일수록,
             </p>
-            <h1 className="text-slate-900 text-[2.25rem] font-bold leading-[1.2] tracking-tight">
-              먼저 내 상태부터<br />정리해보세요.
+            <h1 className="text-slate-50 text-[2rem] font-extrabold leading-[1.18] tracking-tight mb-3">
+              먼저 내 상태부터
+              <br />
+              정리해보세요.
             </h1>
+            <p className="text-slate-300/90 text-[13px] leading-relaxed max-w-sm">
+              손절을 미루고 있거나, 물타기를 고민하고 있거나, 더 버텨야 할지 헷갈릴 때 지금 내 상태를 먼저 점검해보는 게 좋아요.
+            </p>
           </div>
 
-          {/* 공감 블록 */}
-          <div className="mb-5">
-            <p className="text-slate-500 text-xs font-medium mb-3">혹시 지금 이런 마음인가요?</p>
-            <div className="space-y-2.5">
-              {empathyItems.map((item, i) => (
-                <div key={i} className="flex items-center gap-2.5">
-                  <span className="w-1 h-1 rounded-full bg-slate-400 shrink-0" />
-                  <span className="text-slate-600 text-sm leading-snug">{item}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* 상태 태그 */}
-          <div className="flex flex-wrap gap-2 mb-6">
-            {statusTags.map((tag) => (
-              <span
-                key={tag}
-                className="inline-flex items-center text-xs text-slate-600 bg-white border border-slate-200 rounded-full px-3 py-1.5 leading-none"
+          {/* 공감 카드 그리드 */}
+          <p className="text-slate-500 text-[10px] font-semibold tracking-[0.08em] mb-3">
+            지금 이런 상태인가요?
+          </p>
+          <div className="grid grid-cols-2 gap-2.5 mb-7" aria-hidden="true">
+            {empathyCards.map((card, i) => (
+              <div
+                key={i}
+                className={`rounded-xl p-4 border ${
+                  card.active
+                    ? "bg-slate-800 border-indigo-400/70 shadow-[0_12px_24px_rgba(15,23,42,0.28)]"
+                    : "bg-slate-800/80 border-slate-700"
+                }`}
               >
-                {tag}
-              </span>
+                <p
+                  className={`text-[12px] font-semibold leading-snug whitespace-pre-line ${
+                    card.active ? "text-indigo-100" : "text-slate-300"
+                  }`}
+                >
+                  {card.text}
+                </p>
+              </div>
             ))}
           </div>
 
           {/* CTA */}
           <Link
             href="/diagnosis/investment-risk"
-            className="block w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm py-[15px] rounded-2xl text-center transition-colors shadow-[0_4px_14px_rgba(79,70,229,0.25)]"
+            className="block w-full bg-indigo-500 hover:bg-indigo-400 text-white font-bold text-[14px] py-[15px] rounded-2xl text-center transition-colors shadow-[0_10px_28px_rgba(99,102,241,0.35)]"
           >
             내 투자 상태 먼저 정리하기
           </Link>
+          <p className="mt-3 text-[11px] text-slate-400 text-center">
+            무료 · 3분 · 개인정보 불필요
+          </p>
         </div>
       </section>
 

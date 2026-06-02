@@ -79,3 +79,11 @@
 - Checks run: pending `npm run lint`, pending `npm run build`
 - Open issues or next steps: After deployment, hard-refresh the production site and confirm the browser tab icon and mobile home-screen icon update as expected.
 - Commit hash: pending commit creation
+
+## 2026-06-02 23:45:32 +09:00
+- Who: Codex
+- What changed: Refined the home hero into a darker, more focused version that keeps the new empathy-card direction while removing non-deployable proposal artifacts and preserving the existing diagnosis flow.
+- Files touched: `WORKLOG.md`, `src/app/page.tsx`
+- Checks run: `npm run lint` passed, `npm run build` passed
+- Open issues or next steps: Watch actual mobile engagement to decide whether the new dark hero improves first-click conversion or needs another pass on copy density.
+- Commit hash: pending commit creation
